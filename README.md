@@ -17,19 +17,22 @@ Usage of ./depinst:
   -list
     	show required list
   -q	turn off output
-
+```
+```
 $ cat Gopkg.toml
 required = [
     "golang.org/x/tools/cmd/stringer",
     "github.com/rakyll/statik",
     "github.com/rubenv/sql-migrate/sql-migrate",
 ]
-
+```
+```
 $ depinst
 depinst: running [go build -o bin/stringer ./vendor/golang.org/x/tools/cmd/stringer] ...
 depinst: running [go build -o bin/statik ./vendor/github.com/rakyll/statik] ...
 depinst: running [go build -o bin/sql-migrate ./vendor/github.com/rubenv/sql-migrate/sql-migrate] ...
-
+```
+```
 $ ls -1 ./bin
 sql-migrate*
 statik*
