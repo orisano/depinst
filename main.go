@@ -17,6 +17,8 @@ func main() {
 	quietly := flag.Bool("q", false, "turn off output")
 	showList := flag.Bool("list", false, "show required list")
 	binDir := flag.String("dir", filepath.Join(".", "bin"), "bin directory")
+	makeFmt := flag.Bool("make", false, "output makefile format")
+	makeTarget := flag.String("target", "cli", "makefile target name")
 	flag.Parse()
 
 	log.SetPrefix("depinst: ")
@@ -38,6 +40,23 @@ func main() {
 		for _, p := range goPkg.Required {
 			fmt.Println(p)
 		}
+		return
+	}
+
+	if *makeFmt {
+		var bins []string
+		for _, p := range goPkg.Required {
+			name := path.Base(p)
+			binPath := filepath.Join(*binDir, name)
+			pkgPath := filepath.Join("vendor", filepath.FromSlash(p))
+
+			bins = append(bins, binPath)
+
+			fmt.Printf("%s: %s\n", binPath, pkgPath)
+			fmt.Printf("\tgo build -o %s %s\n\n", binPath, "."+string(filepath.Separator)+pkgPath)
+		}
+		fmt.Printf("%s: %s\n\n", *makeTarget, strings.Join(bins, " "))
+		fmt.Printf(".PHONEY: %s\n\n", *makeTarget)
 		return
 	}
 
