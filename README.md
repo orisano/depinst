@@ -16,7 +16,11 @@ Usage of ./depinst:
     	bin directory (default "bin")
   -list
     	show required list
+  -make
+    	output makefile format
   -q	turn off output
+  -target string
+    	makefile target name (default "cli")
 ```
 ```
 $ cat Gopkg.toml
@@ -37,6 +41,19 @@ $ ls -1 ./bin
 sql-migrate*
 statik*
 stringer*
+```
+
+## Use Case
+### Makefile
+```Makefile
+all: cli
+
+.PHONEY: all
+
+.cli.deps: Gopkg.toml
+	@depinst -make > $@
+
+include .cli.deps
 ```
 
 ## Author
