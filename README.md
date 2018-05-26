@@ -57,7 +57,7 @@ include .cli.deps
 ```
 
 ## Author
-Nao Yonashiro (@orisano)
+Nao YONASHIRO (@orisano)
 
 ## License
 MIT
