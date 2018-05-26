@@ -48,7 +48,7 @@ stringer*
 ```Makefile
 all: cli
 
-.PHONEY: all
+.PHONY: all
 
 .cli.deps: Gopkg.toml
 	@depinst -make > $@

@@ -56,7 +56,7 @@ func main() {
 			fmt.Printf("\tgo build -o %s %s\n\n", binPath, "."+string(filepath.Separator)+pkgPath)
 		}
 		fmt.Printf("%s: %s\n\n", *makeTarget, strings.Join(bins, " "))
-		fmt.Printf(".PHONEY: %s\n\n", *makeTarget)
+		fmt.Printf(".PHONY: %s\n\n", *makeTarget)
 		return
 	}
 
