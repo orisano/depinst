@@ -1,5 +1,5 @@
 # depinst
-depinst is supported tool for [golang/dep](https://github.com/golang/dep).
+depinst is a support tool for [golang/dep](https://github.com/golang/dep).
 
 It builds to required packages in Gopkg.toml and saves binaries (mainly for CLI vendoring).
 
